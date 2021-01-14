@@ -66,15 +66,15 @@ public class MyLinkedList{
     return current.getData();
  }
 
- public String set(int _index, String _value){
+ public String set(int _index, String _value) {
     String previous = get(_index);
     getNode(_index).setData(_value);
     return previous;
  }
 
- public String toString(){
+ public String toString() {
    Node current = start;
-   if (size == 0){
+   if (size == 0) {
      return "[]";
    }
    String returned = "[";
@@ -82,8 +82,13 @@ public class MyLinkedList{
       returned += current.getData() + ", ";
       current = current.getNext();
     }
-    return returned.substring(0, returned.length() - 1) + "]";
+    //return returned.substring(0, returned.length() - 1) + "]";
+    if(current != null) {
+      returned += current.getData();
+    }
+    return returned + "]";
  }
+
  public String toStringReversed(){
    Node current = end;
    if (size == 0){
@@ -138,9 +143,10 @@ public class MyLinkedList{
      before.setNext(after);
      after.setPrev(before);
    }
-   size();
+   size--;
    return returned;
  }
+
 
 
  //Any helper method that returns a Node object MUST BE PRIVATE!
